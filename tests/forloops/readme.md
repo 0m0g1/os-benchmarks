@@ -34,7 +34,7 @@ x += i
 
 ## Chart
 
-![For Loop Benchmark Chart](for_loop_benchmark_chart_os.png)
+![For Loop Benchmark Chart](benchmark_chart.png)
 
 ## Usage
 
