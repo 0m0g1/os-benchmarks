@@ -1,76 +1,128 @@
 # OS Language Microbenchmark
 
-This repository contains microbenchmark scripts used to test and compare the performance of a simple `for` loop across multiple programming languages.
+This repository contains microbenchmark scripts to test and compare the performance of a simple `for` loop across multiple programming languages, including compiled and JIT versions of **[OS (OmniScript)](https://github.com/0m0g1/omniscript)**.
 
-## Benchmark Task
+## 🔬 Benchmark Task
 
-Increment a variable `x` by `i` in a loop that runs 1,000,000,000 times:
+A single `for` loop that adds `i` to a variable `x` one billion times:
 
 ```text
 x += i
 ```
 
-## Methodology
+## 🧪 Methodology
 
-* Each test uses high-resolution timers (e.g., `QueryPerformanceCounter` on Windows).
-* All implementations perform a warmup loop to stabilize CPU performance.
-* Outputs include total elapsed time and calculated operations per millisecond (Ops/ms).
+* High-resolution timers used (e.g., `QueryPerformanceCounter` on Windows).
+* Warmup loops stabilize CPU frequency and cache behavior.
+* Final values are printed to prevent dead code elimination.
+* Measured in **milliseconds** with results reported as **Ops/ms**.
 
-## Results (Ops/ms)
+## 📊 Results (Ops/ms)
 
-| Language          | Ops/ms |
-| ----------------- | -----: |
-| **OS (AOT)**      | 1850.4 |
-| **OS (JIT)**      | 1810.4 |
-| C++               | 1437.4 |
-| C                 | 1424.6 |
-| Rust              | 1210.0 |
-| Go                |  580.0 |
-| Java              |  321.3 |
-| JavaScript (Node) |    8.8 |
-| Python            |    1.5 |
+| Language       | Ops/ms |
+| -------------- | -----: |
+| **OS (AOT)**   | 1850.4 |
+| **OS (JIT)**   | 1810.4 |
+| **C++**        | 1437.4 |
+| **C**          | 1424.6 |
+| **Rust**       | 1210.0 |
+| **Go**         |  580.0 |
+| **Java**       |  321.3 |
+| **JavaScript** |    8.8 |
+| **Python**     |    1.5 |
 
-> Note: This is a **microbenchmark**. Real-world performance will vary.
+> ⚠️ **Note**: This is a *microbenchmark*. Real-world workloads may show very different results depending on memory, branching, I/O, etc.
 
-## Chart
+## 📈 Chart
 
 ![For Loop Benchmark Chart](benchmark_chart.png)
 
-## Usage
+## 🚀 Usage
 
-Clone the repo and run the corresponding benchmark files for each language.
-Make sure all dependencies and compilers/runtimes are installed.
+Clone the repository and run each benchmark using the language-specific instructions below.
 
-### Example (Rust):
+Make sure you have all required compilers or runtimes installed.
 
-```bash
-cargo build --release
-./target/release/bench_rust
-```
-
-### Example (C):
+### 🔧 Example (C):
 
 ```bash
 gcc -O3 -o bench_c test.c
 ./bench_c
 ```
 
-## File Structure
+### 🛠️ Example (C++):
 
-```
-/benchmarks
-  test.c
-  test.cpp
-  test.rs
-  test.go
-  test.java
-  test.py
-  test.js
-  test.os       # OS AOT
-  test_jit.os   # OS JIT
-  for_loop_benchmark_chart_os.png
+```bash
+g++ -O3 -o bench_cpp test.cpp
+./bench_cpp
 ```
 
-## License
+### 🮀 Example (Rust):
+
+```bash
+rustc -C opt-level=3 -o bench_rust test.rs
+./bench_rust
+```
+
+### 🌀 Example (Go):
+
+```bash
+go build -ldflags="-s -w" -o bench_go test.go
+./bench_go
+```
+
+### ☕ Example (Java):
+
+```bash
+javac test.java
+java test
+```
+
+### 🧠 Example (Python):
+
+```bash
+python test.py
+```
+
+### 🌐 Example (JavaScript with Node.js):
+
+```bash
+node test.js
+```
+
+### ⚡ Example (OS Language):
+
+You'll need to build the OS compiler to compile scripts, or run them via the JIT.
+
+**Repository:** [github.com/0m0g1/omniscript](https://github.com/0m0g1/omniscript)
+
+```bash
+# AOT-compiled executable (already built in this repo for demo)
+./bench_os
+```
+
+> You can dump the generated assembly or IR if you want to verify what's being run.
+> `objdump -d -M intel ./bench_os.exe > bench_os.asm`
+> 
+## 📁 File Structure
+
+```
+benchmarks/
+├── test.c
+├── test.cpp
+├── test.rs
+├── test.go
+├── test.java
+├── test.py
+├── test.js
+├── test.os             # OS AOT and JIT source
+├── bench_os.exe        # Precompiled OS binary
+├── bench_c.exe         # Precompiled OS binary
+├── bench_go.exe        # Precompiled OS binary
+├── bench_rust.exe      # Precompiled OS binary
+└── benchmark_chart.png
+```
+
+## 📜 License
 
 MIT License
