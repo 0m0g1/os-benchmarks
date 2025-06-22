@@ -102,8 +102,9 @@ You'll need to build the OS compiler to compile scripts, or run them via the JIT
 ```
 
 > You can dump the generated assembly or IR if you want to verify what's being run.
-
-> `objdump -d -M intel ./bench_os.exe > bench_os.asm`
+> ```bash
+> objdump -d -M intel ./bench_os.exe > bench_os.asm
+> ```
 
 ## 📁 File Structure
 
