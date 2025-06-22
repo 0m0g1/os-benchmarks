@@ -93,6 +93,7 @@ node test.js
 ### ⚡ Example (OS Language):
 
 You'll need to build the OS compiler to compile scripts, or run them via the JIT.
+For simplicity the executable is already built in the repo (bench_os.exe). 
 
 **Repository:** [github.com/0m0g1/omniscript](https://github.com/0m0g1/omniscript)
 
